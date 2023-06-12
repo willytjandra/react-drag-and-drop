@@ -1,0 +1,35 @@
+.container {
+  height: 16rem;
+  width: 28rem;
+  max-width: 100%;
+  text-align: center;
+  border: dashed 2px #cbd5e1;
+  border-radius: 1rem;
+  background-color: #f8fafc;
+}
+
+.inputFileUpload {
+  display: none;
+}
+
+.labelFileUpload {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Oswald';
+}
+
+.uploadButton {
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  font-family: 'Oswald';
+}
+
+.uploadButton:hover {
+  text-decoration-line: underline;
+}
