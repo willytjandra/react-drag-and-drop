@@ -6,6 +6,7 @@
   border: dashed 2px #cbd5e1;
   border-radius: 1rem;
   background-color: #f8fafc;
+  position: relative;
 }
 
 .inputFileUpload {
@@ -32,4 +33,18 @@
 
 .uploadButton:hover {
   text-decoration-line: underline;
+}
+
+.dropFileContainer {
+  font-family: 'Oswald';
+  height: 100%;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  border-radius: 1rem;
+  background-color: #f8fafc;
 }
