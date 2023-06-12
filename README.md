@@ -1,3 +1,3 @@
-# React App Template
+# React - Drag-and-Drop
 
-A basic template to create a React Application with Webpack. This template is created based on learning/reading from various sources on the internet.
+Simple file drag-and-drop component. For simplicity and learning purpose, the component is built with React and basic HTML input element. It is
