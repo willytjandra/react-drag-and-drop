@@ -1,9 +1,10 @@
-import { useRef, type ChangeEvent, type MouseEvent } from 'react'
+import { useRef, type ChangeEvent, type MouseEvent, useState, type DragEvent } from 'react'
 
 import styles from './DragAndDrop.module.css'
 
 const DragAndDrop = () => {
   const inputRef = useRef<HTMLInputElement>(null)
+  const [dragActive, setDragActive] = useState(false)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
@@ -20,8 +21,37 @@ const DragAndDrop = () => {
     inputRef.current?.click()
   }
 
+  const handleDrag = (e: DragEvent<HTMLElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if (e.type === 'dragenter' || e.type === 'dragover') {
+      setDragActive(true)
+    } else {
+      setDragActive(false)
+    }
+  }
+
+  const handleDrop = (e: DragEvent<HTMLElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    setDragActive(false)
+    if (e.dataTransfer.files == null || e.dataTransfer.files.length === 0) {
+      console.log('handleDrop - no files selected')
+    } else {
+      console.log(`handleDrop - ${e.dataTransfer.files[0].name}`)
+    }
+  }
+
   return (
-    <form className={styles.container}>
+    <form
+      className={styles.container}
+      onSubmit={(e) => {
+        e.preventDefault()
+      }}
+      onDragEnter={handleDrag}
+    >
       <input
         type="file"
         name="input-file-upload"
@@ -36,6 +66,11 @@ const DragAndDrop = () => {
           Upload a file
         </button>
       </label>
+      {dragActive && (
+        <div className={styles.dropFileContainer} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}>
+          Drop your file here
+        </div>
+      )}
     </form>
   )
 }
