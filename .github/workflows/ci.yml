@@ -33,3 +33,12 @@ jobs:
       - name: Test
         run: |
           npm run test
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: JEST Tests
+          path: 'reports/jest-*.xml'
+          reporter: jest-junit
+          fail-on-error: true
